@@ -9,6 +9,7 @@ import { CardsModule } from '../pages/cards/cards.module';
 import { ButtonsAndIconsModule } from '../pages/buttons-and-icons/buttons-and-icons.module';
 import { FormulariosModule } from '../pages/formularios/formularios.module';
 import { DialogsModule } from '../pages/dialogs/dialogs.module';
+import { TablasModule } from '../pages/tablas/tablas.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { DialogsModule } from '../pages/dialogs/dialogs.module';
     ButtonsAndIconsModule,
     FormulariosModule,
     DialogsModule,
+    TablasModule,
   ],
   exports: [
     DashboardComponent
