@@ -8,9 +8,25 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class FormulariosComponent {
 
-  nombreControl = new FormControl('', [Validators.required]);
+  nombreControl = new FormControl(
+    '',
+    [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(10)
+    ]
+  );
+  emailControl = new FormControl(
+    '',
+    [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.email,
+    ]
+  );
 
   formularioRegistro = new FormGroup({
     nombre: this.nombreControl,
+    email: this.emailControl,
   });
 }

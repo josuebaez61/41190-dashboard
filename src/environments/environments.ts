@@ -1,3 +1,3 @@
 export const enviroment = {
-  isProduction: false
+  isProduction: false,
 }

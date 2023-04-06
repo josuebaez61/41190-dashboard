@@ -15,21 +15,33 @@
 
     <mat-hint>El nombre de tener como minimo 6 caracteres</mat-hint>
 
+    <!-- SOLO SE VA A HACER VISIBLE CUANDO EL INPUT
+      DEL FORMFIELD HA SIDO TOCADO Y SEA INVALIDO -->
+    <mat-error *ngFor="let error of nombreControl.errors | keyvalue">
+      {{ error | controlErrorMessages }}
+    </mat-error>
+
+  </mat-form-field>
+
+
+
+  <mat-form-field appearance="outline">
+
+    <mat-label>Email</mat-label>
+
+    <input
+      [formControl]="emailControl"
+      matInput
+      placeholder="email"
+    >
+
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
 
     <!-- SOLO SE VA A HACER VISIBLE CUANDO EL INPUT
       DEL FORMFIELD HA SIDO TOCADO Y SEA INVALIDO -->
-    <mat-error>Este campo es requerido</mat-error>
-
+    <mat-error *ngFor="let error of emailControl.errors | keyvalue">
+      {{ error | controlErrorMessages }}
+    </mat-error>
   </mat-form-field>
-
-
-  <mat-form-field appearance="outline" >
-    <mat-label>Comida favorita</mat-label>
-    <mat-select>
-      <mat-option>Pizza</mat-option>
-      <mat-option>Cafe</mat-option>
-      <mat-option>Helado</mat-option>
-    </mat-select>
-  </mat-form-field>
-
 </form>
+

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
-interface Estudiante {
+export interface Estudiante {
   id: number;
   nombre: string;
   apellido: string;
@@ -38,7 +38,7 @@ export class TablasComponent {
 
   dataSource = new MatTableDataSource(this.estudiantes);
 
-  displayedColumns: string[] = ['id', 'nombre', 'apellido', 'fecha_registro'];
+  displayedColumns: string[] = ['id', 'nombreCompleto', 'fecha_registro'];
 
   aplicarFiltros(ev: Event): void {
     const inputValue = (ev.target as HTMLInputElement)?.value;
