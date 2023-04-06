@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { PipesModule } from 'src/app/shared/pipes/pipes.module';
+import { DirectivesModule } from 'src/app/shared/directives/directives.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { PipesModule } from 'src/app/shared/pipes/pipes.module';
     MatFormFieldModule,
     MatSelectModule,
     PipesModule,
+    DirectivesModule,
   ],
   exports: [
     FormulariosComponent
