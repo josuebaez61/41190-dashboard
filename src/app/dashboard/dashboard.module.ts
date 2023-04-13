@@ -10,6 +10,8 @@ import { ButtonsAndIconsModule } from '../pages/buttons-and-icons/buttons-and-ic
 import { FormulariosModule } from '../pages/formularios/formularios.module';
 import { DialogsModule } from '../pages/dialogs/dialogs.module';
 import { TablasModule } from '../pages/tablas/tablas.module';
+import { PatronIteradorModule } from '../pages/patron-iterador/patron-iterador.module';
+import { ObservablesModule } from '../pages/observables/observables.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { TablasModule } from '../pages/tablas/tablas.module';
     FormulariosModule,
     DialogsModule,
     TablasModule,
+    PatronIteradorModule,
+    ObservablesModule,
   ],
   exports: [
     DashboardComponent

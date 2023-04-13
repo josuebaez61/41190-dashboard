@@ -2,10 +2,11 @@
 
   <!-- SIDEBAR -->
   <mat-drawer #drawer class="example-sidenav" mode="side">
+    <img width="50" height="50" src="../../assets/img/avatar.svg">
     <p>Auto-resizing sidenav</p>
     <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
     <button (click)="showFiller = !showFiller" mat-raised-button>
-      Toggle extra text
+      {{ showFiller ? 'Show less' : 'Show more'}}
     </button>
   </mat-drawer>
 
@@ -51,7 +52,11 @@
 
       <!-- <app-dialogs></app-dialogs> -->
 
-      <app-tablas></app-tablas>
+      <!-- <app-tablas></app-tablas> -->
+
+      <!-- <app-patron-iterador></app-patron-iterador> -->
+
+      <app-observables></app-observables>
     </main>
   </div>
 </mat-drawer-container>
