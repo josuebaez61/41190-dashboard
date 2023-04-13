@@ -2,42 +2,54 @@
 
   <!-- SIDEBAR -->
   <mat-drawer #drawer class="example-sidenav" mode="side">
+
+
     <img width="50" height="50" src="../../assets/img/avatar.svg">
+
+    <p>{{ authUser?.email }}</p>
+
     <p>Auto-resizing sidenav</p>
     <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
     <button (click)="showFiller = !showFiller" mat-raised-button>
       {{ showFiller ? 'Show less' : 'Show more'}}
     </button>
+
+
   </mat-drawer>
 
   <!-- MI WRAPPER  -->
   <div class="example-sidenav-content">
     <!-- TOOLBAR  -->
     <mat-toolbar color="primary">
-      <button
-        (click)="drawer.toggle()"
-        mat-icon-button
-        class="example-icon"
-        aria-label="Example icon-button with menu icon"
-      >
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span>My App | Es produccion? {{ isProd }} </span>
-      <span class="example-spacer"></span>
-      <button
-        mat-icon-button
-        class="example-icon favorite-icon"
-        aria-label="Example icon-button with heart icon"
-      >
-        <mat-icon>favorite</mat-icon>
-      </button>
-      <button
-        mat-icon-button
-        class="example-icon"
-        aria-label="Example icon-button with share icon"
-      >
-        <mat-icon>share</mat-icon>
-      </button>
+      <div class="flex justify-content-between">
+        <div>
+          <button
+            (click)="drawer.toggle()"
+            mat-icon-button
+            class="example-icon"
+            aria-label="Example icon-button with menu icon"
+          >
+            <mat-icon>menu</mat-icon>
+          </button>
+          <span>My App | Es produccion? {{ isProd }} </span>
+          <span class="example-spacer"></span>
+          <button
+            mat-icon-button
+            class="example-icon favorite-icon"
+            aria-label="Example icon-button with heart icon"
+          >
+            <mat-icon>favorite</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            class="example-icon"
+            aria-label="Example icon-button with share icon"
+          >
+            <mat-icon>share</mat-icon>
+          </button>
+        </div>
+        <p>{{ authUser?.nombre }}</p>
+      </div>
     </mat-toolbar>
 
     <!-- MIS PAGINAS -->

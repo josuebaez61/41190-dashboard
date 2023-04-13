@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject, from } from 'rxjs';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Subject, debounceTime, filter, from, interval, map } from 'rxjs';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { NotificationsService } from 'src/app/core/services/notifications.service';
 
 interface Usuario {
@@ -15,15 +17,27 @@ interface Usuario {
 export class ObservablesComponent implements OnInit {
 
   isLoggedIn = new Subject<Usuario>();
+  notifier = new Subject<string>();
 
 
-  notifier = new Subject<string>()
+  emailControl = new FormControl();
+  nombreControl = new FormControl();
 
-  constructor(private notificationService: NotificationsService) {}
+  authForm = new FormGroup({
+    email: this.emailControl,
+    nombre: this.nombreControl,
+  })
+
+  constructor(
+    private notificationService: NotificationsService,
+    private authService: AuthService,
+  ) {}
 
 
   async ngOnInit(): Promise<void> {
     this.escucharLoggedIn();
+    // this.suscribirseAInterval();
+    this.escucharCambiosEnEmailControl();
 
     this.notifier.next('Se completo con exito');
 
@@ -63,11 +77,40 @@ export class ObservablesComponent implements OnInit {
   }
 
 
+  suscribirseAInterval() {
+
+
+    interval(1000)
+      .pipe(
+        map((v) => v * 2),
+
+        // QUIERO ESCUCHAR TODAS LAS EMISIONES QUE NO SEAN 6
+        filter((v) => v !== 6)
+      )
+      .subscribe((v) => console.log(v))
+  }
+
+
+  escucharCambiosEnEmailControl(): void {
+    this.emailControl.valueChanges
+      .pipe(
+        debounceTime(1000)
+      )
+      .subscribe((valor) => console.log(valor));
+  }
+
   crearUsuario(): void {
     this.notificationService.mostrarMensaje('El usuario se creo correctamente');
   }
 
   escucharLoggedIn(): void {
     this.isLoggedIn.subscribe((valor) => console.log(valor));
+  }
+
+  login(): void {
+    this.authService.login({
+      ...(this.authForm.value as any),
+      id: 54,
+    });
   }
 }
