@@ -40,7 +40,7 @@ export class TablasComponent {
 
   dataSource = new MatTableDataSource(this.estudiantes);
 
-  displayedColumns: string[] = ['id', 'nombreCompleto', 'fecha_registro'];
+  displayedColumns: string[] = ['id', 'nombreCompleto', 'fecha_registro', 'eliminar'];
 
   aplicarFiltros(ev: Event): void {
     const inputValue = (ev.target as HTMLInputElement)?.value;
@@ -50,7 +50,7 @@ export class TablasComponent {
   constructor(private matDialog: MatDialog) {}
 
 
-  abrirABMAlumnos(): void {
+  crearAlumno(): void {
     const dialog = this.matDialog.open(AbmAlumnosComponent)
     dialog.afterClosed().subscribe((valor) => {
       if (valor) {
@@ -64,5 +64,28 @@ export class TablasComponent {
         ];
       }
     })
+  }
+
+  editarAlumno(alumnoParaEditar: Estudiante): void {
+    const dialog = this.matDialog.open(AbmAlumnosComponent, {
+      data: {
+        alumnoParaEditar
+      }
+    })
+    dialog.afterClosed().subscribe((dataDelAlumnoEditado) => {
+      if (dataDelAlumnoEditado) {
+        this.dataSource.data = this.dataSource.data.map(
+          (alumnoActual) => alumnoActual.id === alumnoParaEditar.id
+            ? ({ ...alumnoActual, ...dataDelAlumnoEditado})
+            : alumnoActual,
+        );
+      }
+    })
+  }
+
+  eliminarAlumno(alumnoParaEliminar: Estudiante): void {
+    this.dataSource.data = this.dataSource.data.filter(
+      (alumnoActual) => alumnoActual.id !== alumnoParaEliminar.id,
+    );
   }
 }

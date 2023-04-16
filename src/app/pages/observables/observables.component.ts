@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Subject, debounceTime, filter, from, interval, map } from 'rxjs';
+import { Subject, filter, from, interval, map, tap } from 'rxjs';
+import { Usuario } from 'src/app/core/models';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { NotificationsService } from 'src/app/core/services/notifications.service';
-
-interface Usuario {
-  id: number;
-  nombre: string;
-}
 
 @Component({
   selector: 'app-observables',
@@ -54,14 +50,16 @@ export class ObservablesComponent implements OnInit {
     setTimeout(() => {
       this.isLoggedIn.next({
         id: 5,
-        nombre: 'Maria'
+        nombre: 'Maria',
+        email: 'someemail@mail.com'
       })
     }, 1000);
 
     setTimeout(() => {
       this.isLoggedIn.next({
         id: 56,
-        nombre: 'Jorge'
+        nombre: 'Jorge',
+        email: 'someemail@mail.com'
       })
 
       this.isLoggedIn.complete();
@@ -71,7 +69,8 @@ export class ObservablesComponent implements OnInit {
     setTimeout(() => {
       this.isLoggedIn.next({
         id: 60,
-        nombre: 'Ana'
+        nombre: 'Ana',
+        email: 'someemail@mail.com'
       })
     }, 8000);
   }
@@ -94,7 +93,12 @@ export class ObservablesComponent implements OnInit {
   escucharCambiosEnEmailControl(): void {
     this.emailControl.valueChanges
       .pipe(
-        debounceTime(1000)
+        tap((v) => {
+          console.log(v)
+        }),
+        map((v) => v.toLowerCase()),
+        tap((v) => console.log(v)),
+        // debounceTime(1000)
       )
       .subscribe((valor) => console.log(valor));
   }

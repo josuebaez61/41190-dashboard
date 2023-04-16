@@ -6,7 +6,7 @@
 
     <img width="50" height="50" src="../../assets/img/avatar.svg">
 
-    <p>{{ authUser?.email }}</p>
+    <p>{{ (authUser$ | async)?.email }}</p>
 
     <p>Auto-resizing sidenav</p>
     <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
@@ -48,7 +48,7 @@
             <mat-icon>share</mat-icon>
           </button>
         </div>
-        <p>{{ authUser?.nombre }}</p>
+        <p>{{ (authUser$ | async)?.nombre }}</p>
       </div>
     </mat-toolbar>
 
@@ -64,11 +64,11 @@
 
       <!-- <app-dialogs></app-dialogs> -->
 
-      <!-- <app-tablas></app-tablas> -->
+      <app-tablas></app-tablas>
 
       <!-- <app-patron-iterador></app-patron-iterador> -->
 
-      <app-observables></app-observables>
+      <!-- <app-observables></app-observables> -->
     </main>
   </div>
 </mat-drawer-container>
