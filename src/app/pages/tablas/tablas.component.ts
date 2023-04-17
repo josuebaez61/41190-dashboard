@@ -40,7 +40,7 @@ export class TablasComponent {
 
   dataSource = new MatTableDataSource(this.estudiantes);
 
-  displayedColumns: string[] = ['id', 'nombreCompleto', 'fecha_registro', 'eliminar'];
+  displayedColumns: string[] = ['id', 'nombreCompleto', 'fecha_registro', 'eliminar', 'editar'];
 
   aplicarFiltros(ev: Event): void {
     const inputValue = (ev.target as HTMLInputElement)?.value;
@@ -56,8 +56,9 @@ export class TablasComponent {
       if (valor) {
         this.dataSource.data = [
           ...this.dataSource.data,
+          // AGREGANDO NUEVO ELEMENTO:
           {
-            ...valor,
+            ...valor, // { nombre: 'xxxxxx', apellido: 'xxxxx' }
             fecha_registro: new Date(),
             id: this.dataSource.data.length + 1,
           }
@@ -66,26 +67,27 @@ export class TablasComponent {
     })
   }
 
-  editarAlumno(alumnoParaEditar: Estudiante): void {
-    const dialog = this.matDialog.open(AbmAlumnosComponent, {
-      data: {
-        alumnoParaEditar
-      }
-    })
-    dialog.afterClosed().subscribe((dataDelAlumnoEditado) => {
-      if (dataDelAlumnoEditado) {
-        this.dataSource.data = this.dataSource.data.map(
-          (alumnoActual) => alumnoActual.id === alumnoParaEditar.id
-            ? ({ ...alumnoActual, ...dataDelAlumnoEditado})
-            : alumnoActual,
-        );
-      }
-    })
-  }
 
   eliminarAlumno(alumnoParaEliminar: Estudiante): void {
     this.dataSource.data = this.dataSource.data.filter(
       (alumnoActual) => alumnoActual.id !== alumnoParaEliminar.id,
     );
+  }
+
+  editarAlumno(alumnoParaEditar: Estudiante): void {
+    const dialog = this.matDialog.open(AbmAlumnosComponent, {
+      data: {
+        alumnoParaEditar
+      }
+    });
+    dialog.afterClosed().subscribe((valorDelFormulario) => {
+      if (valorDelFormulario) {
+        this.dataSource.data = this.dataSource.data.map(
+          (alumnoActual) => alumnoActual.id === alumnoParaEditar.id
+            ? ({ ...alumnoActual, ...valorDelFormulario}) // { nombre: 'xxxxxx', apellido: 'xxxxx' }
+            : alumnoActual,
+        );
+      }
+    })
   }
 }
