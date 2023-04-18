@@ -3,6 +3,7 @@ import { enviroment } from 'src/environments/environments';
 import { AuthService } from '../core/services/auth.service';
 import { Usuario } from '../core/models';
 import { Observable, Subject, Subscription, filter, map, takeUntil } from 'rxjs';
+import links from './nav-items';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,6 +15,8 @@ export class DashboardComponent implements OnDestroy {
   isProd = enviroment.isProduction;
 
   authUser$: Observable<Usuario>;
+
+  links = links;
 
   destroyed$ = new Subject<void>();
 

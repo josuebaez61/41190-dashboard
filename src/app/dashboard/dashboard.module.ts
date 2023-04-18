@@ -12,6 +12,8 @@ import { DialogsModule } from '../pages/dialogs/dialogs.module';
 import { TablasModule } from '../pages/tablas/tablas.module';
 import { PatronIteradorModule } from '../pages/patron-iterador/patron-iterador.module';
 import { ObservablesModule } from '../pages/observables/observables.module';
+import { RouterModule } from '@angular/router';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { ObservablesModule } from '../pages/observables/observables.module';
   ],
   imports: [
     CommonModule,
+    RouterModule,
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
@@ -27,6 +30,7 @@ import { ObservablesModule } from '../pages/observables/observables.module';
     ButtonsAndIconsModule,
     FormulariosModule,
     DialogsModule,
+    MatListModule,
     TablasModule,
     PatronIteradorModule,
     ObservablesModule,

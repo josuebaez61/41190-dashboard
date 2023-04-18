@@ -8,11 +8,22 @@
 
     <p>{{ (authUser$ | async)?.email }}</p>
 
-    <p>Auto-resizing sidenav</p>
+
+    <mat-nav-list>
+      <a
+        [routerLink]="link.path"
+        mat-list-item
+        *ngFor="let link of links"
+      >
+        {{ link.title }}
+      </a>
+    </mat-nav-list>
+
+    <!-- <p>Auto-resizing sidenav</p>
     <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
     <button (click)="showFiller = !showFiller" mat-raised-button>
       {{ showFiller ? 'Show less' : 'Show more'}}
-    </button>
+    </button> -->
 
 
   </mat-drawer>
@@ -54,7 +65,7 @@
 
     <!-- MIS PAGINAS -->
     <main>
-
+      <router-outlet></router-outlet>
 
       <!-- <app-cards></app-cards> -->
 
@@ -64,7 +75,7 @@
 
       <!-- <app-dialogs></app-dialogs> -->
 
-      <app-tablas></app-tablas>
+      <!-- <app-tablas></app-tablas> -->
 
       <!-- <app-patron-iterador></app-patron-iterador> -->
 
