@@ -1,7 +1,7 @@
 <mat-drawer-container class="example-container" autosize>
 
   <!-- SIDEBAR -->
-  <mat-drawer #drawer class="example-sidenav" mode="side">
+  <mat-drawer [opened]="true" #drawer class="example-sidenav" mode="side">
 
 
     <img width="50" height="50" src="../../assets/img/avatar.svg">
@@ -16,6 +16,12 @@
         *ngFor="let link of links"
       >
         {{ link.title }}
+      </a>
+      <a
+        (click)="logout()"
+        mat-list-item
+      >
+        Cerrar sesión
       </a>
     </mat-nav-list>
 

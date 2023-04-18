@@ -4,6 +4,7 @@ import { AuthService } from '../core/services/auth.service';
 import { Usuario } from '../core/models';
 import { Observable, Subject, Subscription, filter, map, takeUntil } from 'rxjs';
 import links from './nav-items';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,7 +21,10 @@ export class DashboardComponent implements OnDestroy {
 
   destroyed$ = new Subject<void>();
 
-  constructor(private authService: AuthService) {
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {
 
     this.authUser$ = this.authService.obtenerUsuarioAutenticado()
 
@@ -35,5 +39,9 @@ export class DashboardComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.destroyed$.next();
     this.destroyed$.complete();
+  }
+
+  logout(): void {
+    this.router.navigate(['auth', 'login']);
   }
 }

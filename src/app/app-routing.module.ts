@@ -4,6 +4,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TablasComponent } from './pages/tablas/tablas.component';
 import { CardsComponent } from './pages/cards/cards.component';
 import { FormulariosComponent } from './pages/formularios/formularios.component';
+import { AuthComponent } from './auth/auth.component';
+import { LoginComponent } from './auth/pages/login/login.component';
+import { AlumnoDetalleComponent } from './pages/tablas/pages/alumno-detalle/alumno-detalle.component';
 
 const routes: Routes = [
   {
@@ -14,8 +17,23 @@ const routes: Routes = [
       {
         // http://localhost:XXXX/dashboard/estudiantes
         path: 'estudiantes',
-        component: TablasComponent,
+        children: [
+          {
+            // dashboard/estudiantes
+            path: '',
+            component: TablasComponent,
+          },
+          {
+            // dashboard/estudiantes/:id
+            path: ':id',
+            component: AlumnoDetalleComponent
+          }
+        ]
       },
+      // {
+      //   path: 'estudiantes/:id',
+      //   component: AlumnoDetalleComponent,
+      // },
       {
         path: 'cards',
         component: CardsComponent,
@@ -29,6 +47,16 @@ const routes: Routes = [
       //   path: 'comisiones',
       //   component: TablasComponent,
       // },
+    ]
+  },
+  {
+    path: 'auth',
+    component: AuthComponent,
+    children: [
+      {
+        path: 'login',
+        component: LoginComponent
+      }
     ]
   },
   {
