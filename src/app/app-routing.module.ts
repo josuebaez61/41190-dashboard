@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { TablasComponent } from './pages/tablas/tablas.component';
-import { CardsComponent } from './pages/cards/cards.component';
-import { FormulariosComponent } from './pages/formularios/formularios.component';
+import { TablasComponent } from './dashboard/pages/tablas/tablas.component';
+import { CardsComponent } from './dashboard/pages/cards/cards.component';
+import { FormulariosComponent } from './dashboard/pages/formularios/formularios.component';
 import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './auth/pages/login/login.component';
-import { AlumnoDetalleComponent } from './pages/tablas/pages/alumno-detalle/alumno-detalle.component';
+import { AlumnoDetalleComponent } from './dashboard/pages/tablas/pages/alumno-detalle/alumno-detalle.component';
 
 const routes: Routes = [
   {
