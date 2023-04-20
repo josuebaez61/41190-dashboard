@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './auth/pages/login/login.component';
 import { CoreModule } from './core/core.module';
+import { CursosModule } from './dashboard/pages/cursos/cursos.module';
 
 @NgModule({
   declarations: [

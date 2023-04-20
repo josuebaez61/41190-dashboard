@@ -14,10 +14,10 @@ export interface Alumno {
 
 @Component({
   selector: 'app-tablas',
-  templateUrl: './tablas.component.html',
-  styleUrls: ['./tablas.component.scss']
+  templateUrl: './alumnos.component.html',
+  styleUrls: ['./alumnos.component.scss']
 })
-export class TablasComponent {
+export class AlumnosComponent {
 
 
   dataSource = new MatTableDataSource<Alumno>();

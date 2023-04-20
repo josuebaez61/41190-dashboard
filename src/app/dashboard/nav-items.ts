@@ -15,10 +15,6 @@ const links: NavItem[] = [
     title: 'Cursos',
     icon: 'school'
   },
-  {
-    path: 'cards',
-    title: 'Tarjetas',
-  },
 ]
 
 export default links;

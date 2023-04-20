@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TablasComponent } from './tablas.component';
+import { AlumnosComponent } from './alumnos.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -15,7 +15,7 @@ import { AlumnoDetalleComponent } from './pages/alumno-detalle/alumno-detalle.co
 
 @NgModule({
   declarations: [
-    TablasComponent,
+    AlumnosComponent,
     AbmAlumnosComponent,
     AlumnoDetalleComponent
   ],
@@ -31,7 +31,7 @@ import { AlumnoDetalleComponent } from './pages/alumno-detalle/alumno-detalle.co
     ReactiveFormsModule
   ],
   exports: [
-    TablasComponent
+    AlumnosComponent
   ]
 })
-export class TablasModule { }
+export class AlumnosModule { }
