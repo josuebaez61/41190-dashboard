@@ -13,7 +13,7 @@ export class AbmCursosComponent {
   fechaInicioControl = new FormControl('', [Validators.required]);
   fechaFinControl = new FormControl('', [Validators.required]);
 
-  alumnosForm = new FormGroup({
+  cursoForm = new FormGroup({
     nombre: this.nombreControl,
     fecha_inicio: this.fechaInicioControl,
     fecha_fin: this.fechaInicioControl,
@@ -24,17 +24,19 @@ export class AbmCursosComponent {
     @Inject(MAT_DIALOG_DATA) private data: any,
   ) {
     if (data) {
-      this.nombreControl.setValue(data.alumnoParaEditar.nombre);
-      this.fechaInicioControl.setValue(data.alumnoParaEditar.apellido);
+      const cursoParaEditar = data.curso;
+      this.nombreControl.setValue(cursoParaEditar.nombre);
+      this.fechaInicioControl.setValue(cursoParaEditar.fecha_inicio);
+      this.fechaFinControl.setValue(cursoParaEditar.fecha_fin);
     }
   }
 
 
   guardar(): void {
-    if (this.alumnosForm.valid) {
-      this.dialogRef.close(this.alumnosForm.value)
+    if (this.cursoForm.valid) {
+      this.dialogRef.close(this.cursoForm.value)
     } else {
-      this.alumnosForm.markAllAsTouched();
+      this.cursoForm.markAllAsTouched();
     }
   }
 }

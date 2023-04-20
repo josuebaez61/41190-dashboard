@@ -9,7 +9,9 @@ import { AbmCursosComponent } from './components/abm-cursos/abm-cursos.component
 import { ReactiveFormsModule } from '@angular/forms';
 import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 import { MatInputModule } from '@angular/material/input';
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -29,6 +31,10 @@ import { MatInputModule } from '@angular/material/input';
 
     MatTableModule,
     MatButtonModule,
+
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ]
 })
 export class CursosModule { }

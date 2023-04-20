@@ -3,7 +3,8 @@ import { CursosService } from './services/cursos.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Curso } from './models';
 import { MatDialog } from '@angular/material/dialog';
-import { AbmAlumnosComponent } from '../alumnos/abm-alumnos/abm-alumnos.component';
+import { AbmCursosComponent } from './components/abm-cursos/abm-cursos.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-cursos',
@@ -37,14 +38,38 @@ export class CursosComponent implements OnInit {
   }
 
   crearCurso(): void {
-    this.dialog.open(AbmAlumnosComponent);
+    const dialog = this.dialog.open(AbmCursosComponent);
+    dialog.afterClosed()
+      .subscribe((formValue) => {
+        if (formValue) {
+          this.cursosService.crearCurso(formValue)
+        }
+      });
+  }
+
+  editarCurso(curso: Curso): void {
+    const dialog = this.dialog.open(AbmCursosComponent, {
+      data: {
+        curso,
+      }
+    })
+
+    dialog.afterClosed()
+      .subscribe((formValue) => {
+        if (formValue) {
+          this.cursosService.editarCurso(curso.id, formValue);
+        }
+      })
+  }
+
+  eliminarCurso(curso: Curso): void {
+    if (confirm('Está seguro?')) {
+      this.cursosService.eliminarCurso(curso.id);
+    }
   }
 
   aplicarFiltros(ev: Event): void {}
 
   irAlDetalle(cursoId: number): void {}
 
-  eliminarCurso(curso: Curso): void {}
-
-  editarCurso(curso: Curso): void {}
 }

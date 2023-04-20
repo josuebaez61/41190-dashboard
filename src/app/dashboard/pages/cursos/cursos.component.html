@@ -5,7 +5,6 @@
   </button>
 </div>
 
-
 <mat-form-field class="w-full">
   <mat-label>Filter</mat-label>
   <input matInput (keyup)="aplicarFiltros($event)" placeholder="Ex. ium" #input>
@@ -30,13 +29,13 @@
 
   <!-- Fecha de Registro Column -->
   <ng-container matColumnDef="fecha_inicio">
-    <th mat-header-cell *matHeaderCellDef>Fecha de registro</th>
+    <th mat-header-cell *matHeaderCellDef>Fecha de inicio</th>
     <td mat-cell *matCellDef="let curso"> {{curso.fecha_inicio | date: 'dd/MM/YYYY'  }} </td>
   </ng-container>
 
   <!-- Fecha de Registro Column -->
   <ng-container matColumnDef="fecha_fin">
-    <th mat-header-cell *matHeaderCellDef>Fecha de registro</th>
+    <th mat-header-cell *matHeaderCellDef>Fecha de fin</th>
     <td mat-cell *matCellDef="let curso"> {{curso.fecha_fin | date: 'dd/MM/YYYY'  }} </td>
   </ng-container>
 
