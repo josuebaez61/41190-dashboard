@@ -11,7 +11,7 @@ import { RepetirDirective } from './repetir.directive';
     RepetirDirective
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports: [
     FontSizeDirective,

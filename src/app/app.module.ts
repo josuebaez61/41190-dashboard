@@ -7,6 +7,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './auth/pages/login/login.component';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { LoginComponent } from './auth/pages/login/login.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    CoreModule,
     DashboardModule,
     AppRoutingModule,
   ],

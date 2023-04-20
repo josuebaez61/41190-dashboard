@@ -7,8 +7,10 @@ import { FormulariosComponent } from './dashboard/pages/formularios/formularios.
 import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './auth/pages/login/login.component';
 import { AlumnoDetalleComponent } from './dashboard/pages/tablas/pages/alumno-detalle/alumno-detalle.component';
+import { CursosComponent } from './dashboard/pages/cursos/cursos.component';
 
 const routes: Routes = [
+  // DASHBOARD
   {
     // http://localhost:XXXX/dashboard
     path: 'dashboard',
@@ -42,6 +44,10 @@ const routes: Routes = [
         path: 'formularios',
         component: FormulariosComponent,
       },
+      {
+        path: 'cursos',
+        component: CursosComponent,
+      }
       // {
       // http://localhost:XXXX/dashboard/comisiones
       //   path: 'comisiones',
@@ -49,6 +55,8 @@ const routes: Routes = [
       // },
     ]
   },
+
+  // AUTH
   {
     path: 'auth',
     component: AuthComponent,
@@ -56,9 +64,11 @@ const routes: Routes = [
       {
         path: 'login',
         component: LoginComponent
-      }
+      },
     ]
   },
+
+  // RUTAS INDEFINIDAS....
   {
     // CUALQUIER RUTA
     path: '**',
