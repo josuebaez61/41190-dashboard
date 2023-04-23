@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, inject } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AlumnosComponent } from './dashboard/pages/alumnos/alumnos.component';
@@ -6,6 +6,8 @@ import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './auth/pages/login/login.component';
 import { AlumnoDetalleComponent } from './dashboard/pages/alumnos/pages/alumno-detalle/alumno-detalle.component';
 import { CursosComponent } from './dashboard/pages/cursos/cursos.component';
+import { AuthGuard, newAuthGuard } from './core/guards/auth.guard';
+import { LoginGuard } from './core/guards/login.guard';
 
 const routes: Routes = [
   // DASHBOARD
@@ -13,6 +15,8 @@ const routes: Routes = [
     // http://localhost:XXXX/dashboard
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [newAuthGuard],
+    // canActivate: [AuthGuard],
     children: [
       {
         // http://localhost:XXXX/dashboard/estudiantes
@@ -50,12 +54,14 @@ const routes: Routes = [
   {
     path: 'auth',
     component: AuthComponent,
-    children: [
-      {
-        path: 'login',
-        component: LoginComponent
-      },
-    ]
+    canActivate: [LoginGuard],
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+    // children: [
+    //   {
+    //     path: 'login',
+    //     component: LoginComponent
+    //   },
+    // ]
   },
 
   // RUTAS INDEFINIDAS....
@@ -72,6 +78,6 @@ const routes: Routes = [
   ],
   exports: [
     RouterModule
-  ]
+  ],
 })
 export class AppRoutingModule { }
