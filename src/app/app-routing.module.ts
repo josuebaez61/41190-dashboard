@@ -13,49 +13,15 @@ const routes: Routes = [
     // http://localhost:XXXX/dashboard
     path: 'dashboard',
     component: DashboardComponent,
-    children: [
-      {
-        // http://localhost:XXXX/dashboard/estudiantes
-        path: 'estudiantes',
-        children: [
-          {
-            // dashboard/estudiantes
-            path: '',
-            component: AlumnosComponent,
-          },
-          {
-            // dashboard/estudiantes/:id
-            path: ':id',
-            component: AlumnoDetalleComponent
-          }
-        ]
-      },
-      // {
-      //   path: 'estudiantes/:id',
-      //   component: AlumnoDetalleComponent,
-      // },
-      {
-        path: 'cursos',
-        component: CursosComponent,
-      }
-      // {
-      // http://localhost:XXXX/dashboard/comisiones
-      //   path: 'comisiones',
-      //   component: AlumnosComponent,
-      // },
-    ]
+    // children: []
+    loadChildren: () => import('./dashboard/dashboard.module').then((m) => m.DashboardModule)
   },
 
   // AUTH
   {
     path: 'auth',
     component: AuthComponent,
-    children: [
-      {
-        path: 'login',
-        component: LoginComponent
-      },
-    ]
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
 
   // RUTAS INDEFINIDAS....
