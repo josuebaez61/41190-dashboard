@@ -12,6 +12,7 @@ import { CursosModule } from './pages/cursos/cursos.module';
 import { AlumnosComponent } from './pages/alumnos/alumnos.component';
 import { AlumnoDetalleComponent } from './pages/alumnos/pages/alumno-detalle/alumno-detalle.component';
 import { CursosComponent } from './pages/cursos/cursos.component';
+import { AdminGuard } from '../auth/guards/admin.guard';
 
 @NgModule({
   declarations: [

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService, LoginFormValue } from '../../services/auth.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,13 +16,16 @@ export class LoginComponent {
     password: this.passwordControl,
   });
 
+  constructor(private authService: AuthService, private activatedRoute: ActivatedRoute) {
+    console.log(this.activatedRoute.snapshot);
+  }
+
 
   onSubmit(): void {
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
     } else {
-      console.log(this.loginForm.value);
-      // this.authService.login(this.loginForm.value as LoginPayload)
+      this.authService.login(this.loginForm.value as LoginFormValue)
     }
   }
 }

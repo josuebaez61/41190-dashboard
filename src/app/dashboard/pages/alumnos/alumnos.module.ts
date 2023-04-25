@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AlumnoDetalleComponent } from './pages/alumno-detalle/alumno-detalle.component';
 import { AlumnosRoutingModule } from './alumnos-routing.module';
 import { RouterModule } from '@angular/router';
+import { AdminGuard } from 'src/app/auth/guards/admin.guard';
 
 
 @NgModule({
@@ -34,7 +35,7 @@ import { RouterModule } from '@angular/router';
     // AlumnosRoutingModule,
     RouterModule.forChild([
       {
-        path: 'hola-mundo',
+        path: '',
         component: AlumnosComponent
       },
       {
