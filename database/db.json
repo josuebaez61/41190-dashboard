@@ -1,0 +1,35 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "Josue",
+      "apellido": "Baez",
+      "email": "josue@email.com",
+      "role": "admin",
+      "password": "123456",
+      "token": "kNMF43JHJsjnfdn4kas4@#$u4!@#Dskn"
+    }
+  ],
+  "cursos": [
+    {
+      "id": 1,
+      "nombre": "Angular"
+    }
+  ],
+  "commissions": [
+    {
+      "id": 41190,
+      "cursoId": 1,
+      "startDate": "2023-01-15 23:59:59",
+      "endDate": "2023-01-15 23:59:59"
+    }
+  ],
+  "inscripciones": [
+    {
+      "id": 1,
+      "cursoId": 1,
+      "commissionId": 41190,
+      "usuarioId": 1
+    }
+  ]
+}

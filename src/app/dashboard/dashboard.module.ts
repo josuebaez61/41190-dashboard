@@ -13,6 +13,7 @@ import { AlumnosComponent } from './pages/alumnos/alumnos.component';
 import { AlumnoDetalleComponent } from './pages/alumnos/pages/alumno-detalle/alumno-detalle.component';
 import { CursosComponent } from './pages/cursos/cursos.component';
 import { AdminGuard } from '../auth/guards/admin.guard';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -26,12 +27,14 @@ import { AdminGuard } from '../auth/guards/admin.guard';
     MatIconModule,
     MatButtonModule,
     MatListModule,
-    AlumnosModule,
-    CursosModule,
+    MatDialogModule,
+    // AlumnosModule,
+    // CursosModule,
     RouterModule.forChild([
       {
         // http://localhost:XXXX/dashboard/estudiantes
         path: 'estudiantes',
+        canActivate: [AdminGuard],
         loadChildren: () => import('./pages/alumnos/alumnos.module').then((m) => m.AlumnosModule)
         // children: [
         //   {

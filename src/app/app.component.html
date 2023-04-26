@@ -1,3 +1,3 @@
 <!-- <app-dashboard></app-dashboard> -->
-
+<mat-progress-bar *ngIf="loadingService.getIsLoading() | async"  class="absolute" mode="indeterminate"></mat-progress-bar>
 <router-outlet></router-outlet>

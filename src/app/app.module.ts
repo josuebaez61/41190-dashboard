@@ -7,6 +7,9 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { CursosModule } from './dashboard/pages/cursos/cursos.module';
+import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { CursosModule } from './dashboard/pages/cursos/cursos.module';
     BrowserAnimationsModule,
     CoreModule,
     // DashboardModule,
+    HttpClientModule,
+    MatProgressBarModule,
     AppRoutingModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
