@@ -1,5 +1,5 @@
 {
-  "usuarios": [
+  "users": [
     {
       "id": 1,
       "nombre": "Josue",
@@ -10,7 +10,15 @@
       "token": "kNMF43JHJsjnfdn4kas4@#$u4!@#Dskn"
     }
   ],
-  "cursos": [
+  "students": [
+    {
+      "id": 1,
+      "nombre": "Naruto",
+      "apellido": "Uzumaki",
+      "fecha_registro": "2023-01-15 23:59:59"
+    }
+  ],
+  "courses": [
     {
       "id": 1,
       "nombre": "Angular"
@@ -19,17 +27,17 @@
   "commissions": [
     {
       "id": 41190,
-      "cursoId": 1,
+      "courseId": 1,
       "startDate": "2023-01-15 23:59:59",
       "endDate": "2023-01-15 23:59:59"
     }
   ],
-  "inscripciones": [
+  "inscriptions": [
     {
       "id": 1,
-      "cursoId": 1,
+      "courseId": 1,
       "commissionId": 41190,
-      "usuarioId": 1
+      "studentId": 1
     }
   ]
 }

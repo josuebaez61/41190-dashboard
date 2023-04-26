@@ -1,0 +1,39 @@
+##https://plantuml.com/es/ie-diagram
+
+@startuml
+
+object Student {
+id
+nombre
+apellido
+fecha_registro
+}
+
+
+object Course {
+id
+nombre
+}
+
+object Commission {
+id
+courseId
+startDate
+endDate
+}
+
+object Inscriptions {
+id
+courseId
+commissionId
+studentId
+}
+
+
+Student ||--o{ Inscriptions
+Course ||--o{ Inscriptions
+Commission ||--o{ Inscriptions
+Commission }o--|| Course
+
+
+@enduml
