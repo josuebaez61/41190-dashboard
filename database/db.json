@@ -1,0 +1,22 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "Josué",
+      "apellido": "Baez",
+      "email": "josue@mail.com",
+      "password": "123456",
+      "token": "hjsdfJHFDSAFMsaD#@!$san12sdanjjadashj3FDBEWH",
+      "role": "admin"
+    },
+    {
+      "nombre": "Facundo",
+      "apellido": "Perez",
+      "email": "juan@email.com",
+      "password": "123456",
+      "token": "nmdsgfjhuMDKSAFJASDK327SJDKANjsadnsah",
+      "role": "user",
+      "id": 4
+    }
+  ]
+}
