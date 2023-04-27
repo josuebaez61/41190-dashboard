@@ -11,9 +11,7 @@ import { AbmAlumnosComponent } from './abm-alumnos/abm-alumnos.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AlumnoDetalleComponent } from './pages/alumno-detalle/alumno-detalle.component';
-import { AlumnosRoutingModule } from './alumnos-routing.module';
 import { RouterModule } from '@angular/router';
-import { AdminGuard } from 'src/app/auth/guards/admin.guard';
 
 
 @NgModule({

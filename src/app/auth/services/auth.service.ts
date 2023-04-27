@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, map, catchError, throwError } from 'rxjs';
 import { Usuario } from 'src/app/core/models';
 import { enviroment } from 'src/environments/environments';
 export interface LoginFormValue {
@@ -58,16 +58,34 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem('auth-user');
+    localStorage.removeItem('token');
     this.authUser$.next(null);
     this.router.navigate(['auth']);
   }
 
-  verificarStorage(): void {
-    const storageValor = localStorage.getItem('auth-user');
-    if (storageValor) {
-      const usuario = JSON.parse(storageValor);
-      this.authUser$.next(usuario);
-    }
+  verificarToken(): Observable<boolean> {
+    const token = localStorage.getItem('token');
+    return this.httpClient.get<Usuario[]>(
+      `${enviroment.apiBaseUrl}/usuarios?token=${token}`,
+      {
+        headers: new HttpHeaders({
+          'Authorization': token || '',
+        }),
+      }
+    )
+      .pipe(
+        map((usuarios) => {
+          const usuarioAutenticado = usuarios[0];
+          if (usuarioAutenticado) {
+            localStorage.setItem('token', usuarioAutenticado.token)
+            this.authUser$.next(usuarioAutenticado);
+          }
+          return !!usuarioAutenticado;
+        }),
+        catchError((err) => {
+          alert('Error al verificar el token');
+          return throwError(() => err);
+        })
+      );
   }
 }
