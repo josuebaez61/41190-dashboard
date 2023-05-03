@@ -10,6 +10,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AuthService } from "../services/auth.service";
 import { AuthMockService } from "./auth.mock.service";
 import { CommonModule } from "@angular/common";
+import { MockProvider, MockService } from 'ng-mocks';
+import { HttpClientModule } from "@angular/common/http";
 
 export const AuthMockModule: TestModuleMetadata = {
   declarations: [
@@ -26,9 +28,11 @@ export const AuthMockModule: TestModuleMetadata = {
     PipesModule,
   ],
   providers: [
-    {
-      provide: AuthService,
-      useClass: AuthMockService,
-    },
+    MockProvider(AuthService),
+    // AuthService,
+    // {
+    //   provide: AuthService,
+    //   useClass: AuthMockService,
+    // },
   ]
 }

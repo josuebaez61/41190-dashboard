@@ -3,7 +3,7 @@ import { LoginComponent } from './login.component';
 import { AuthService } from '../../services/auth.service';
 import { AuthMockModule } from '../../mocks/auth.mock.module';
 
-describe('Pruebas en LoginComponent', () => {
+fdescribe('Pruebas en LoginComponent', () => {
   let component: LoginComponent;
   let authService: AuthService;
   beforeEach(async () => {

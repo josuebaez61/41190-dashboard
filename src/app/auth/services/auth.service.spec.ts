@@ -4,7 +4,7 @@ import { HttpClientTestingModule, HttpTestingController } from "@angular/common/
 import { enviroment } from "src/environments/environments";
 import { USUARIO_ADMIN_MOCK } from "../mocks/auth.mock.service";
 import { RouterTestingModule } from "@angular/router/testing";
-import { filter, skip, take } from "rxjs";
+import { skip } from "rxjs";
 import { Router } from "@angular/router";
 
 fdescribe('Pruebas de AuthService', () => {
