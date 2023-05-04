@@ -8,7 +8,8 @@ export const USUARIO_ADMIN_MOCK: Usuario = {
   email: 'test@mail.com',
   nombre: 'testnombre',
   role: 'admin',
-  token: 'asdkjsanfkdams3u2hjdasfadsuh'
+  token: 'asdkjsanfkdams3u2hjdasfadsuh',
+  password: '12312312',
 }
 
 export class AuthServiceMock {
