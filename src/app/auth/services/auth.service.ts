@@ -25,7 +25,7 @@ export class AuthService {
     return this.authUser$.asObservable();
   }
 
-  private establecerUsuarioAutenticado(usuario: Usuario): void {
+  establecerUsuarioAutenticado(usuario: Usuario): void {
     this.authUser$.next(usuario);
   }
 

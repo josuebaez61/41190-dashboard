@@ -38,7 +38,6 @@ describe('Pruebas sobre AuthService', () => {
         token: 'asdjkasdnasjhdj36231321',
       },
     ];
-
     spyOn(TestBed.inject(Router), 'navigate');
     service
       .obtenerUsuarioAutenticado()
