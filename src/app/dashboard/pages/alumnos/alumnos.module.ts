@@ -12,6 +12,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AlumnoDetalleComponent } from './pages/alumno-detalle/alumno-detalle.component';
 import { RouterModule } from '@angular/router';
+import { Store, StoreModule } from '@ngrx/store';
+import { alumnosFeature } from './store/alumnos.reducer';
 
 
 @NgModule({
@@ -31,6 +33,7 @@ import { RouterModule } from '@angular/router';
     MatButtonModule,
     ReactiveFormsModule,
     // AlumnosRoutingModule,
+    StoreModule.forFeature(alumnosFeature),
     RouterModule.forChild([
       {
         path: '',

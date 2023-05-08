@@ -12,10 +12,12 @@ export interface AppState {
 @NgModule({
   declarations: [],
   imports: [
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({
+      [authFeatureKey]: reducer,
+    }, {}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    StoreModule.forFeature(authFeatureKey, reducer),
+    // StoreModule.forFeature(authFeatureKey, reducer),
   ]
 })
 export class AppStoreModule { }

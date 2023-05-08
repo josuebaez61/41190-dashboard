@@ -45,6 +45,7 @@ const routes: Routes = [
     MatInputModule,
     MatButtonModule,
     MatIconModule,
+    // StoreModule.forFeature(authFeatureKey, reducer),
   ],
 })
 export class AuthModule { }
