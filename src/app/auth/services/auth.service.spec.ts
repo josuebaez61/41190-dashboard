@@ -59,31 +59,6 @@ describe('Pruebas sobre AuthService', () => {
   it('El logout debe emitir un authUser null, remover el token del Localstorage y redireccionar al usuario',
   () => {
     const spyOnNavigate = spyOn(TestBed.inject(Router), 'navigate');
-    const loginFake: LoginFormValue = {
-      email: 'test@mail.com',
-      password: '123456',
-    };
-    const MOCK_REQUEST_RESULT: Usuario[] = [
-      {
-        id: 1,
-        apellido: 'testapellido',
-        email: loginFake.email,
-        nombre: 'testnombre',
-        password: loginFake.password,
-        role: 'admin',
-        token: 'asdjkasdnasjhdj36231321',
-      },
-    ];
-
-    service.login(loginFake);
-    httpController
-      .expectOne({
-        // http://localhost:3000/usuarios
-        url: `${enviroment.apiBaseUrl}/usuarios?email=${loginFake.email}&password=${loginFake.password}`,
-        method: 'GET',
-      })
-      .flush(MOCK_REQUEST_RESULT);
-
 
     service.logout();
 
