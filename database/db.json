@@ -19,24 +19,67 @@
       "id": 4
     }
   ],
-  "cursos": [
+  "courses": [
     {
       "id": 1,
-      "nombre": "Angular",
+      "matterId": 1,
       "fecha_fin": "2023-04-27T01:27:59.631Z",
       "fecha_inicio": "2023-04-27T01:27:59.631Z"
     },
     {
       "id": 2,
-      "nombre": "Javascript",
+      "matterId": 2,
       "fecha_fin": "2023-04-27T01:27:59.631Z",
       "fecha_inicio": "2023-04-27T01:27:59.631Z"
     },
     {
       "id": 3,
-      "nombre": "Desarrollo Web",
+      "matterId": 2,
       "fecha_fin": "2023-04-27T01:27:59.631Z",
       "fecha_inicio": "2023-04-27T01:27:59.631Z"
+    }
+  ],
+  "matters": [
+    {
+      "id": 1,
+      "nombre": "Angular",
+      "description": "Curso de Angular con duración de 2 meses."
+    },
+    {
+      "id": 2,
+      "nombre": "Desarrollo Web"
+    },
+    {
+      "id": 3,
+      "nombre": "Desarrollo Javascript"
+    }
+  ],
+  "inscriptions": [
+    {
+      "id": 1,
+      "matterId": 2,
+      "studentId": 3,
+      "courseId": 1
+    },
+    {
+      "id": 2,
+      "matterId": 2,
+      "studentId": 1,
+      "courseId": 2
+    }
+  ],
+  "students": [
+    {
+      "id": 3,
+      "nombre": "Naruto",
+      "apellido": "Uzumaki",
+      "fecha_registro": "2023-04-27T01:27:59.631Z"
+    },
+    {
+      "id": 1,
+      "nombre": "Sasuke",
+      "apellido": "Uchiha",
+      "fecha_registro": "2023-04-27T01:27:59.631Z"
     }
   ]
 }
