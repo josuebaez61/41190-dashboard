@@ -33,6 +33,11 @@ import { AdminGuard } from '../auth/guards/admin.guard';
       {
         path: 'cursos',
         loadChildren: () => import('./pages/cursos/cursos.module').then((m) => m.CursosModule),
+      },
+      {
+        // /dashboard/inscripciones
+        path: 'inscripciones',
+        loadChildren: () => import('./pages/inscripciones/inscripciones.module').then((m) => m.InscripcionesModule),
       }
     ])
   ],
