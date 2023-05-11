@@ -7,19 +7,19 @@ import { enviroment } from 'src/environments/environments';
 const CURSOS_MOCKS: Curso[] = [
   {
     id: 1,
-    nombre: 'Angular',
+    subjectId: 3,
     fecha_fin: new Date(),
     fecha_inicio: new Date(),
   },
   {
     id: 2,
-    nombre: 'Javascript',
+    subjectId: 3,
     fecha_fin: new Date(),
     fecha_inicio: new Date(),
   },
   {
     id: 3,
-    nombre: 'Desarrollo Web',
+    subjectId: 3,
     fecha_fin: new Date(),
     fecha_inicio: new Date(),
   },
@@ -29,20 +29,17 @@ const CURSOS_MOCKS: Curso[] = [
   providedIn: 'root',
 })
 export class CursosService {
-  private cursos$ = new BehaviorSubject<Curso[]>(
-    []
-  );
+  private cursos$ = new BehaviorSubject<Curso[]>([]);
 
-  constructor(
-    private httpClient: HttpClient
-  ) {}
+  constructor(private httpClient: HttpClient) {}
 
   get cursos(): Observable<Curso[]> {
     return this.cursos$.asObservable();
   }
 
   obtenerCursos(): Observable<Curso[]> {
-    return this.httpClient.get<Curso[]>(`${enviroment.apiBaseUrl}/cursos`)
+    return this.httpClient
+      .get<Curso[]>(`${enviroment.apiBaseUrl}/courses`)
       .pipe(
         tap((cursos) => this.cursos$.next(cursos)),
         mergeMap(() => this.cursos$.asObservable())
@@ -50,79 +47,71 @@ export class CursosService {
   }
 
   getCursoById(cursoId: number): Observable<Curso | undefined> {
-    return this.cursos$.asObservable()
-      .pipe(
-        map((cursos) => cursos.find((c) => c.id === cursoId))
-      )
+    return this.cursos$
+      .asObservable()
+      .pipe(map((cursos) => cursos.find((c) => c.id === cursoId)));
   }
 
   crearCurso(payload: CrearCursoPayload): Observable<Curso[]> {
-    this.cursos$
-      .pipe(
-        take(1)
-      )
-      .subscribe({
-        next: (cursos) => {
-          this.cursos$.next([
-            ...cursos,
-            {
-              id: cursos.length + 1,
-              ...payload,
-            },
-          ]);
-        },
-        complete: () => {},
-        error: () => {}
-      });
+    this.cursos$.pipe(take(1)).subscribe({
+      next: (cursos) => {
+        this.cursos$.next([
+          ...cursos,
+          {
+            id: cursos.length + 1,
+            ...payload,
+          },
+        ]);
+      },
+      complete: () => {},
+      error: () => {},
+    });
 
-      // then => next
-      // catch => error
-      // finally => complete
+    // then => next
+    // catch => error
+    // finally => complete
 
     return this.cursos$.asObservable();
   }
 
-  editarCurso(cursoId: number, actualizacion: Partial<Curso>): Observable<Curso[]> {
-    this.cursos$
-      .pipe(
-        take(1),
-      )
-      // .subscribe({
-      //   next: (cursos) => {
+  editarCurso(
+    cursoId: number,
+    actualizacion: Partial<Curso>
+  ): Observable<Curso[]> {
+    this.cursos$.pipe(take(1));
+    // .subscribe({
+    //   next: (cursos) => {
 
-      //     const cursosActualizados = cursos.map((curso) => {
-      //       if (curso.id === cursoId) {
-      //         return {
-      //           ...curso,
-      //           ...actualizacion,
-      //         }
-      //       } else {
-      //         return curso;
-      //       }
-      //     })
+    //     const cursosActualizados = cursos.map((curso) => {
+    //       if (curso.id === cursoId) {
+    //         return {
+    //           ...curso,
+    //           ...actualizacion,
+    //         }
+    //       } else {
+    //         return curso;
+    //       }
+    //     })
 
-      //     this.cursos$.next(cursosActualizados);
-      //   },
-      //   complete: () => {},
-      //   error: () => {}
-      // });
+    //     this.cursos$.next(cursosActualizados);
+    //   },
+    //   complete: () => {},
+    //   error: () => {}
+    // });
 
     return this.cursos$.asObservable();
   }
-
 
   eliminarCurso(cursoId: number): Observable<Curso[]> {
-    this.cursos$
-    .pipe(
-      take(1)
-    )
-    .subscribe({
+    this.cursos$.pipe(take(1)).subscribe({
       next: (cursos) => {
-        const cursosActualizados = cursos.filter((curso) => curso.id !== cursoId)
+        const cursosActualizados = cursos.filter(
+          (curso) => curso.id !== cursoId
+        );
         this.cursos$.next(cursosActualizados);
       },
       complete: () => {},
-      error: () => {}
+      error: () => {},
     });
 
     return this.cursos$.asObservable();

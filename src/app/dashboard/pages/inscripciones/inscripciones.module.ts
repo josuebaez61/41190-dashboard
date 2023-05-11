@@ -6,6 +6,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { InscripcionesEffects } from './store/inscripciones.effects';
 import { StoreModule } from '@ngrx/store';
 import { inscripcionesFeature } from './store/inscripciones.reducer';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -16,6 +18,8 @@ import { inscripcionesFeature } from './store/inscripciones.reducer';
   imports: [
     CommonModule,
     InscripcionesRoutingModule,
+    MatIconModule,
+    MatButtonModule,
     StoreModule.forFeature(inscripcionesFeature),
     EffectsModule.forFeature([InscripcionesEffects])
   ]
