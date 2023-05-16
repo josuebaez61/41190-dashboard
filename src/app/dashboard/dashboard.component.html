@@ -1,29 +1,27 @@
 <mat-drawer-container class="example-container" autosize>
-
   <!-- SIDEBAR -->
   <mat-drawer [opened]="true" #drawer class="example-sidenav" mode="side">
-
-
-    <img width="50" height="50" src="../../assets/img/avatar.svg">
+    <img width="50" height="50" src="../../assets/img/avatar.svg" />
 
     <p>{{ (authUser$ | async)?.nombre }}</p>
     <p>{{ (authUser$ | async)?.email }}</p>
 
+    <p>{{ (authUser$ | async)?.role }}</p>
 
     <mat-nav-list>
-      <a
-        [routerLink]="link.path"
-        mat-list-item
-        *ngFor="let link of links"
-      >
-        <mat-icon *ngIf="link.icon">{{ link.icon }}</mat-icon> {{ link.title }}
-      </a>
-      <a
-        (click)="logout()"
-        mat-list-item
-      >
-        Cerrar sesión
-      </a>
+      <ng-container *ngFor="let link of links">
+        <a
+          [routerLink]="link.path"
+          mat-list-item
+          *ngIf="
+            !link.allowedRoles.length || (verifyRole(link) | async)
+          "
+        >
+          <mat-icon *ngIf="link.icon">{{ link.icon }}</mat-icon>
+          {{ link.title }}
+        </a>
+      </ng-container>
+      <a (click)="logout()" mat-list-item> Cerrar sesión </a>
     </mat-nav-list>
 
     <!-- <p>Auto-resizing sidenav</p>
@@ -31,8 +29,6 @@
     <button (click)="showFiller = !showFiller" mat-raised-button>
       {{ showFiller ? 'Show less' : 'Show more'}}
     </button> -->
-
-
   </mat-drawer>
 
   <!-- MI WRAPPER  -->

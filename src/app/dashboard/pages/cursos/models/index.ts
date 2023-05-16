@@ -6,7 +6,6 @@ export interface Curso {
   fecha_inicio: Date;
   fecha_fin: Date;
 }
-
 export interface CursoWithSubject extends Curso {
   subject: Subject;
 }

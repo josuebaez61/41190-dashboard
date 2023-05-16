@@ -20,7 +20,6 @@ import { EffectsModule } from '@ngrx/effects';
     BrowserAnimationsModule,
     CoreModule,
     HttpClientModule,
-    // DashboardModule,
     AppRoutingModule,
     StoreModule.forRoot(actionReducerMap, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
