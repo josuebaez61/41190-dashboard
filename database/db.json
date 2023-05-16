@@ -60,6 +60,24 @@
       "subjectId": 2,
       "studentId": 1,
       "courseId": 2
+    },
+    {
+      "subjectId": 1,
+      "studentId": 3,
+      "courseId": 1,
+      "id": 3
+    },
+    {
+      "subjectId": 1,
+      "studentId": 3,
+      "courseId": 1,
+      "id": 4
+    },
+    {
+      "subjectId": 2,
+      "studentId": 1,
+      "courseId": 2,
+      "id": 5
     }
   ],
   "students": [
